@@ -12,5 +12,12 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+# Copy and setup entrypoint script
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Switch back to the original user
 USER node
+
+# Use our entrypoint script
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
