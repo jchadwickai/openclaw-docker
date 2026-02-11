@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  openclaw-gateway:
+  gateway:
     build:
-      context: .
+      context: ./gateway
       dockerfile: Dockerfile
     container_name: openclaw-gateway
     restart: unless-stopped
@@ -29,7 +29,7 @@ services:
       - SYS_ADMIN
 
   cli:
-    image: ubuntu:22.04
+    image: ghcr.io/openclaw/openclaw:2026.2.9
     container_name: openclaw-cli
     restart: unless-stopped
     command: sleep infinity
