@@ -7,7 +7,6 @@ gh auth setup-git
 
 echo "Configured git authentication for GitHub CLI"
 
-echo "Running OpenClaw Gateway with arguments: $@"
+echo "Starting OpenClaw Gateway..."
 
-# Execute the original entrypoint with all arguments
-exec /usr/local/bin/docker-entrypoint.sh "$@"
+exec /usr/local/bin/docker-entrypoint.sh node openclaw.mjs gateway --allow-unconfigured

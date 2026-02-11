@@ -20,4 +20,4 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 USER node
 
 # Use our entrypoint script
-#ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
