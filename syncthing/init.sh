@@ -15,5 +15,5 @@ if [ ! -f "$CONFIG_FILE" ]; then
     echo "Config initialized. Syncthing will generate device ID on first start."
 fi
 
-# Start Syncthing
-exec /bin/syncthing "$@"
+# Call the official entrypoint
+exec /bin/entrypoint.sh /bin/syncthing "$@"
