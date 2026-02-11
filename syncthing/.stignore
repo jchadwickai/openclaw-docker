@@ -1,0 +1,16 @@
+// Syncthing ignore patterns for openclaw workspace
+// Ignore git directories and metadata
+.git
+.git/**
+.gitignore
+.gitattributes
+
+// Ignore common lock and cache files
+node_modules
+.npm
+.cache
+*.lock
+
+// Ignore OS-specific files
+.DS_Store
+Thumbs.db

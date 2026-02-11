@@ -16,6 +16,28 @@ services:
     volumes:
       - openclaw-data:/home/node/.openclaw
 
+  syncthing:
+    image: syncthing/syncthing:latest
+    container_name: openclaw-syncthing
+    restart: unless-stopped
+    hostname: openclaw-sync
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - openclaw-data:/data:rw
+      - syncthing-config:/var/syncthing
+      - ./syncthing/.stignore:/data/workspace/.stignore:ro
+      - ./syncthing/config.xml:/config-template/config.xml:ro
+      - ./syncthing/init.sh:/init.sh:ro
+    entrypoint: ["/bin/sh", "/init.sh"]
+    ports:
+      - "8384:8384"     # Web UI
+      - "22000:22000/tcp" # TCP file transfers
+      - "22000:22000/udp" # QUIC file transfers
+      - "21027:21027/udp" # Receive local discovery broadcasts
+
 volumes:
   openclaw-data:
     external: true
+  syncthing-config:
