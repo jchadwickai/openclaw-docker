@@ -13,6 +13,9 @@ services:
       - HOME=/home/node
       - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
       - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - BW_CLIENTID=${BW_CLIENTID}
+      - BW_CLIENTSECRET=${BW_CLIENTSECRET}
+      - BW_PASSWORD=${BW_PASSWORD}
     volumes:
       - openclaw-data:/home/node/.openclaw
 

@@ -36,6 +36,11 @@ nginx -g 'daemon off;' &
 
 NGINX_PID=$!
 echo "Nginx started (PID: $NGINX_PID)"
+
+# Create a default blank page so tabs are visible in DevTools
+echo "Creating default page..."
+sleep 1
+curl -s -X PUT 'http://localhost:19222/json/new?about:blank' > /dev/null || true
 echo "Browser service ready - Chrome remote debugging available at port 9222"
 
 # Wait for either process to exit
