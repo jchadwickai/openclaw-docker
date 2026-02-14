@@ -11,11 +11,13 @@ services:
     user: "1000:1000"
     environment:
       - HOME=/home/node
-      - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
-      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - BRAVE_API_KEY=${BRAVE_API_KEY}
       - BW_CLIENTID=${BW_CLIENTID}
       - BW_CLIENTSECRET=${BW_CLIENTSECRET}
       - BW_PASSWORD=${BW_PASSWORD}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GITHUB_TOKEN=${GITHUB_TOKEN}
+      - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
     volumes:
       - openclaw-data:/home/node/.openclaw
 
