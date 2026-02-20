@@ -70,7 +70,17 @@ start_bitwarden() {
 
 start_gateway() {
     echo "Starting OpenClaw Gateway..."
-    openclaw gateway --allow-unconfigured
+    local openclaw_bin="${OPENCLAW_BIN:-${NPM_CONFIG_PREFIX}/bin/openclaw}"
+    if [ ! -x "$openclaw_bin" ]; then
+        openclaw_bin="$(command -v openclaw || true)"
+    fi
+
+    if [ -z "${openclaw_bin:-}" ] || [ ! -x "$openclaw_bin" ]; then
+        echo "Error: openclaw binary not found. Checked ${NPM_CONFIG_PREFIX}/bin/openclaw and PATH."
+        return 127
+    fi
+
+    "$openclaw_bin" gateway --allow-unconfigured
 }
 
 start_gh &
