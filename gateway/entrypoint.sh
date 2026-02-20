@@ -54,4 +54,4 @@ fi
 
 echo "Starting OpenClaw Gateway..."
 
-exec /usr/local/bin/docker-entrypoint.sh node openclaw.mjs gateway --allow-unconfigured
+exec openclaw gateway --allow-unconfigured
