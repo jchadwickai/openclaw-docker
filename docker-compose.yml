@@ -24,7 +24,7 @@ services:
       - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
       - OLLAMA_API_KEY=ollama-local
     volumes:
-      - ai-assistant-data:/home/node
+      - openclaw:/home/node
       
   ollama:
     image: ollama/ollama:latest
@@ -53,8 +53,8 @@ services:
       - PUID=1000
       - PGID=1000
     volumes:
-      - ai-assistant-data:/data:rw
-      - syncthing-config:/var/syncthing
+      - openclaw:/data:rw
+      - syncthing:/var/syncthing
     ports:
       - "8384:8384"     # Web UI
       - "22000:22000/tcp" # TCP file transfers
@@ -62,7 +62,6 @@ services:
       - "21027:21027/udp" # Receive local discovery broadcasts
 
 volumes:
-  ai-assistant-data:
-    external: true
+  openclaw:
   ollama:
-  syncthing-config:
+  syncthing:
